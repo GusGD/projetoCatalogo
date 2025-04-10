@@ -1,0 +1,63 @@
+# ====== GERAL ======
+*.log
+*.tmp
+*.swp
+.DS_Store
+.env
+.env.*
+
+# ====== IDEs ======
+.idea/
+.vscode/
+*.iml
+
+# ====== SISTEMA OPERACIONAL ======
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ====== MAVEN (BACKEND) ======
+**/target/
+**/.mvn/
+!**/.mvn/wrapper/maven-wrapper.jar
+
+# Wrapper logs
+mvnw
+mvnw.cmd
+
+# ====== JAVA ======
+*.class
+*.jar
+*.war
+*.ear
+hs_err_pid*
+
+# ====== FRONTEND (NODE/VITE) ======
+**/node_modules/
+**/dist/
+**/build/
+**/.vite/
+**/.parcel-cache/
+**/.next/
+**/.nuxt/
+**/.cache/
+**/coverage/
+
+# lockfiles
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# ====== CONFIGURAÇÕES SENSÍVEIS E TEMPORÁRIAS ======
+*.local
+*.sublime-workspace
+*.env.local
+*.env.development.local
+*.env.test.local
+*.env.production.local
+
+# ====== TESTES ======
+/test-output/
+/coverage/
+/jest.config.js
+/jest.setup.js
