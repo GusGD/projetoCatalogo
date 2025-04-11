@@ -1,0 +1,10 @@
+INSERT INTO tb_category (name) VALUES ('Tecnologia');
+INSERT INTO tb_category (name) VALUES ('Educação');
+INSERT INTO tb_category (name) VALUES ('Saúde');
+INSERT INTO tb_category (name) VALUES ('Esportes');
+INSERT INTO tb_category (name) VALUES ('Entretenimento');
+INSERT INTO tb_category (name) VALUES ('Negócios');
+INSERT INTO tb_category (name) VALUES ('Ciência');
+INSERT INTO tb_category (name) VALUES ('Moda');
+INSERT INTO tb_category (name) VALUES ('Culinária');
+INSERT INTO tb_category (name) VALUES ('Viagens');
