@@ -3,7 +3,6 @@ package com.gusgd.catalogo.controllers;
 import java.net.URI;
 import java.util.List;
 
-import org.springframework.boot.autoconfigure.jersey.JerseyProperties.Servlet;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -2,13 +2,11 @@ package com.gusgd.catalogo.services;
 
 import java.util.List;
 
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.gusgd.catalogo.dto.CategoryDTO;
 import com.gusgd.catalogo.entities.Category;
 import com.gusgd.catalogo.repositories.CategoryRepository;
-import com.gusgd.catalogo.services.exception.ResourceDataBaseException;
 import com.gusgd.catalogo.services.exception.ResourceNotFoundException;
 
 import org.springframework.transaction.annotation.Transactional;
