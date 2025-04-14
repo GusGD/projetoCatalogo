@@ -1,4 +1,4 @@
-package com.gusgd.catalogo.services;
+package com.gusgd.catalogo.services.exception;
 
 public class ForbiddenException extends RuntimeException {
   public ForbiddenException(String message){
