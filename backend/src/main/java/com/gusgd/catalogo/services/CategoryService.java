@@ -2,6 +2,8 @@ package com.gusgd.catalogo.services;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.gusgd.catalogo.dto.CategoryDTO;
@@ -19,9 +21,9 @@ public class CategoryService {
 	private final CategoryRepository repository;
 
 	@Transactional(readOnly = true)
-	public List<CategoryDTO> findAll(){
-			List<Category> list = repository.findAll();
-			return list.stream().map(CategoryDTO::new).toList();
+	public Page<CategoryDTO> findAll(String name, Pageable pageable){
+			Page<Category> list = repository.searchByName(name,pageable);
+			return list.map(CategoryDTO::new);
 	}
 
 	@Transactional(readOnly = true)
