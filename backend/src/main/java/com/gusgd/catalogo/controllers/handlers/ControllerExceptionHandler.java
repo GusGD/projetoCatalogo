@@ -53,7 +53,11 @@ public class ControllerExceptionHandler {
   }
 
   @ExceptionHandler(DataIntegrityViolationException.class)
-  public void handleDataIntegrityViolation(DataIntegrityViolationException e) {
-    throw new ResourceDataBaseException("Integrity violation. Cannot delete product with related entities.");
+  public ResponseEntity<CustomError> handleDataIntegrityViolation(DataIntegrityViolationException e, HttpServletRequest request) {
+    HttpStatus status = HttpStatus.BAD_REQUEST;
+    CustomError err = new CustomError(Instant.now(), status.value(), 
+                                      "Integrity violation. Cannot delete product with related entities.", 
+                                      request.getRequestURI());
+    return ResponseEntity.status(status).body(err);
   }
 }
