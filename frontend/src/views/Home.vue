@@ -73,6 +73,17 @@
 import Card from '@/components/ui/card.vue';
 import { ArrowRight } from 'lucide-vue-next';
 import { useRouter } from 'vue-router';
+import { onMounted } from 'vue';
+import { getProducts } from '@/api/api';
+
+onMounted(async () => {
+  try {
+    const response = await getProducts();
+    console.log('Produtos:', response.data.content);
+  } catch (error) {
+    console.error('Erro ao buscar produtos:', error);
+  }
+});
 
 const router = useRouter();
 </script>
