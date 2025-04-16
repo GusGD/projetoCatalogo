@@ -9,10 +9,10 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")  // Permite CORS em todos os endpoints
-                .allowedOrigins("http://localhost:5173") // URL do seu front-end Vue
-                .allowedMethods("GET", "POST", "PUT", "DELETE") // Métodos HTTP permitidos
-                .allowedHeaders("*") // Permite qualquer cabeçalho
-                .allowCredentials(true); // Permite credenciais (cookies, cabeçalhos de autenticação)
+        registry.addMapping("/**")  
+                .allowedOrigins("http://localhost:5173")
+                .allowedMethods("GET", "POST", "PUT", "DELETE")
+                .allowedHeaders("*")
+                .allowCredentials(true);
     }
 }
