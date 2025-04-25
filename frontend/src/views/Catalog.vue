@@ -9,10 +9,39 @@
           Encontre os melhores produtos do mercado
         </p>
       </template>
+
+      <template #default>
+        <div v-if="products.length > 0" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
+          <div
+            v-for="product in products"
+            :key="product.id"
+            class="bg-white border rounded-xl p-4 shadow-md flex flex-col items-start"
+          >
+            <h2 class="text-lg font-semibold text-[#263238]">{{ product.name }}</h2>
+            <p class="text-sm text-gray-600 mt-1">{{ product.description }}</p>
+            <span class="mt-2 font-bold text-[#1e88e5]">R$ {{ product.price.toFixed(2) }}</span>
+          </div>
+        </div>
+
+        <p v-else class="text-gray-500 text-center mt-6">Nenhum produto encontrado.</p>
+      </template>
     </Card>
   </div>
 </template>
 
 <script setup lang="ts">
 import Card from '@/components/ui/card.vue';
+import { ref, onMounted } from 'vue';
+import { getProducts } from '@/api/api';
+
+const products = ref<any[]>([]);
+
+onMounted(async () => {
+  try {
+    const response = await getProducts();
+    products.value = response.data.content;
+  } catch (error) {
+    console.error('Erro ao buscar produtos:', error);
+  }
+});
 </script>
