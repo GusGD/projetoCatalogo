@@ -11,6 +11,7 @@ import com.gusgd.catalogo.dto.ProductDTO;
 import com.gusgd.catalogo.entities.Category;
 import com.gusgd.catalogo.entities.Product;
 import com.gusgd.catalogo.repositories.ProductRepository;
+import com.gusgd.catalogo.services.exception.ResourceDataBaseException;
 import com.gusgd.catalogo.services.exception.ResourceNotFoundException;
 
 import lombok.RequiredArgsConstructor;
@@ -51,13 +52,21 @@ public class ProductService {
 
   }
 
-  @Transactional(propagation = Propagation.SUPPORTS)
-  public void delete(Long id){
-		Product entity = repository.findById(id)
-																.orElseThrow(() -> new ResourceNotFoundException("product not found. ID: " + id));
-		repository.delete(entity);
-	}
+@Transactional(propagation = Propagation.REQUIRED)
+public void delete(Long id) {
+  try {
+    Product entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("product not found. ID: " + id));
 
+    if (!entity.getCategories().isEmpty())
+        throw new ResourceDataBaseException("Cannot delete product with id " + id + 
+                                            " because it is referenced by one or more categories.");
+    repository.delete(entity);
+
+  } catch (ResourceDataBaseException e) {
+      throw new ResourceDataBaseException("Cannot delete product with id " + id + 
+                                          " due to database integrity constraints.");
+  }
+}
   private void copyDtoToEntity(ProductDTO dto, Product entity) {
     entity.setName(dto.getName());
     entity.setDescription(dto.getDescription());
