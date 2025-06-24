@@ -1,5 +1,7 @@
 package com.gusgd.catalogo.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import org.junit.jupiter.api.Assertions;
@@ -9,8 +11,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import com.gusgd.catalogo.dto.ProductDTO;
 import com.gusgd.catalogo.entities.Category;
 import com.gusgd.catalogo.entities.Product;
 import com.gusgd.catalogo.repositories.ProductRepository;
@@ -70,4 +77,15 @@ public class ProductServiceTests {
 			service.delete(dependentId);
 		});
 	}
+	@Test
+	public void findAllPagedShouldReturnPage() {
+			Pageable pageable = PageRequest.of(0, 10);
+			List<Product> products = new ArrayList<>();
+			Page<Product> productPage = new PageImpl<>(products, pageable, products.size());
+			Mockito.when(repository.findAll(pageable)).thenReturn(productPage);
+			Page<ProductDTO> result = service.findAllPaged(pageable);
+			Assertions.assertNotNull(result);
+			Mockito.verify(repository).findAll(pageable);
+	}
+
 }
