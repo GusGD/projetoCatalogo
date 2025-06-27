@@ -48,6 +48,7 @@ INSERT INTO tb_product (name, description, price, img_url) VALUES ('Guia de Viag
 INSERT INTO tb_product (name, description, price, img_url) VALUES ('Mochila de Viagem', 'Resistente e espaçosa', 199.90, 'https://example.com/img38.jpg');
 INSERT INTO tb_product (name, description, price, img_url) VALUES ('Câmera Fotográfica', 'Alta resolução para suas aventuras', 1499.90, 'https://example.com/img39.jpg');
 INSERT INTO tb_product (name, description, price, img_url) VALUES ('Power Bank Solar', 'Carregue seus dispositivos em qualquer lugar', 129.90, 'https://example.com/img40.jpg');
+INSERT INTO tb_product (name, description, price, img_url) VALUES ('TESTE Power Bank Solar', 'Carregue seus dispositivos em qualquer lugar', 129.90, 'https://example.com/img40.jpg');
 INSERT INTO tb_product_category (product_id, category_id) VALUES (1, 1);
 INSERT INTO tb_product_category (product_id, category_id) VALUES (2, 1);
 INSERT INTO tb_product_category (product_id, category_id) VALUES (3, 1);
