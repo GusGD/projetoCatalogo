@@ -41,7 +41,6 @@ public class ProductControllerIT {
   private Long existingId;
   private Long nonExistingId;
   private Long countTotalProducts;
-  private Long dependentId;
   private int page;
   private int size;
   private String sort;
@@ -51,7 +50,6 @@ public class ProductControllerIT {
     existingId = 41L;
     nonExistingId = 1000L;
     countTotalProducts = 41L;
-    dependentId = 1L;
     page = 0;
     size = 41;
     sort = "name,asc";
